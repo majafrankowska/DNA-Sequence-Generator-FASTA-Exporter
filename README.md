@@ -1,6 +1,6 @@
 # DNA Sequence Generator & FASTA Exporter
 
-Project developed as part of Bioinformatics / File Processing exercises for PBIO class at PJATK
+Project developed as part of Bioinformatics file processing exercises for PBIO class at PJATK
 
 ---
 
