@@ -1,6 +1,6 @@
 # DNA Sequence Generator & FASTA Exporter
 
-Project Type: Python Script — Bioinformatics / File Processing
+Project developed as part of Bioinformatics / File Processing exercises for PBIO class at PJATK
 
 ---
 
