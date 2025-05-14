@@ -18,15 +18,35 @@ def generate_dna_sequence(length):
     sequence = ''.join(random.choice(nucleotides) for _ in range(length))
     return sequence
 
-# Funkcja do obliczania statystyk nukleotydowych
+# Funkcja odpowiedzialna za obliczenie podstawowych statystyk zawartości nukleotydów w sekwencji DNA.
+# Przyjmuje jako argument łańcuch znaków 'sequence', składający się z liter A, C, G i T.
+
 def calculate_statistics(sequence):
+    # Obliczenie całkowitej długości sekwencji (liczba nukleotydów bez wstawionego imienia).
     total = len(sequence)
+
+    # Inicjalizacja pustego słownika, w którym będą przechowywane procentowe wartości dla każdego nukleotydu.
     stats = {}
+
+    # Pętla przechodząca przez każdy z czterech standardowych nukleotydów.
     for nucleotide in ['A', 'C', 'G', 'T']:
+        # Dla każdego nukleotydu obliczana jest jego procentowa zawartość
+        # względem całkowitej długości sekwencji i zapisywana w słowniku 'stats'.
         stats[nucleotide] = round((sequence.count(nucleotide) / total) * 100, 1)
+
+    # Obliczenie łącznej zawartości cytozyny (C) i guaniny (G) w sekwencji.
     cg_content = stats['C'] + stats['G']
+
+    # Obliczenie sumarycznej zawartości adeniny (A) i tyminy (T).
     at_content = stats['A'] + stats['T']
+
+    # Obliczenie stosunku CG do AT wyrażonego w procentach.
+    # Jeśli zawartość AT wynosi zero, aby uniknąć dzielenia przez 0, stosunek ustawiany jest na 0.
     ratio = round((cg_content / at_content) * 100, 1) if at_content != 0 else 0
+
+    # Zwrócenie dwóch elementów:
+    # 1. Słownika z procentową zawartością A, C, G, T
+    # 2. Wyliczonego stosunku CG do AT w procentach
     return stats, ratio
 
 # Funkcja do formatowania sekwencji w linie po 60 znaków (standard FASTA)
