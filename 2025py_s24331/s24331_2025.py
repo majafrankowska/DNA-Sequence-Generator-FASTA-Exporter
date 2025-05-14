@@ -1,8 +1,14 @@
 # Maja Frankowska s24331
 
+#Cel programu:
 # Program generuje losową sekwencję DNA o podanej przez użytkownika długości, 
 # zapisuje ją w formacie FASTA oraz wyświetla statystyki zawartości nukleotydów.
 # W losowym miejscu wstawia imię użytkownika (które nie wpływa na statystyki).
+
+#Kontekst zastosowania:
+# Program może być wykorzystany jako przykład prostego narzędzia bioinformatycznego,
+# służącego do nauki podstaw formatu FASTA i przetwarzania danych genetycznych.
+# Pozwala zrozumieć strukturę danych biologicznych oraz wykonać analizę składu nukleotydów.
 
 import random
 
@@ -73,15 +79,25 @@ try:
 
     print(f"Sekwencja została zapisana do pliku {filename}")
 
-    # Obliczanie i wyświetlanie statystyk (bez wstawionego imienia)
+    # Wywołanie funkcji calculate_statistics z oryginalną sekwencją DNA (bez imienia).
+    # Funkcja ta oblicza procentowy udział każdego z czterech nukleotydów: A, C, G, T.
+    # Dodatkowo obliczany jest stosunek sumy zawartości C i G do sumy zawartości A i T.
     stats, cg_at_ratio = calculate_statistics(dna_sequence)
 
+    # Wyświetlenie informacji o procentowej zawartości nukleotydów.
     print("Statystyki sekwencji:")
+
+    # Iteracja przez wszystkie nukleotydy i wypisanie ich udziału procentowego.
     for nucleotide, percent in stats.items():
         print(f"{nucleotide}: {percent}%")
+
+    # Wypisanie obliczonego stosunku CG do AT.
     print(f"%CG: {cg_at_ratio}")
 
+# Obsługa błędu, jeśli użytkownik poda niepoprawną wartość długości.
 except ValueError as ve:
     print(f"Błąd: {ve}")
+
+# Obsługa pozostałych, nieprzewidzianych wyjątków.
 except Exception as e:
     print(f"Wystąpił nieoczekiwany błąd: {e}")
